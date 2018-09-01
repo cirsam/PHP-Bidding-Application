@@ -9,7 +9,7 @@ Class Routes
 	public function __construct()
 	{
 		$this->method = "index";
-		$this->controller = "HomeController";
+		$this->controller = "Home";
 	}
 	
 	public function pages($request)

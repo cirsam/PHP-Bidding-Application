@@ -1,9 +1,9 @@
 <?php namespace Bidding\Controllers;
 //echo "goet here";
-use Bidding\Models\LoginModel as Login;
+use Bidding\Models\LoginModel as LoginModel;
 use Controllers\HomeController;
 
-class LoginController extends Login
+class Login extends LoginModel
 {
         function __contstuct()
         {
@@ -15,6 +15,5 @@ class LoginController extends Login
         }
 
 }
-$test = new LoginController();
 
 ?>

@@ -1,6 +1,6 @@
 <?php namespace Bidding\Controllers;
 
-class HomeController
+class Home
 {
         function __contstuct(){
 

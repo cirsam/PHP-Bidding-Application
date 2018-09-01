@@ -1,17 +1,35 @@
 <?php namespace Bidding\Controllers;
-//echo "goet here";
+
 use Bidding\Models\LoginModel as LoginModel;
 use Controllers\HomeController;
+use Bidding\Interfaces\ILoginSystem as ILogin;
 
-class Login extends LoginModel
+class Login extends LoginModel implements ILogin
 {
         function __contstuct()
         {
-            echo "this is the controller";
+           
         }
 
         function index(){
-            echo "this is the index";
+
+            return "This is the Login page of the Bidding API";
+
+        }
+
+        public function signUp($params)
+        {
+
+        }
+
+        public function signIn($params)
+        {
+
+        }
+        
+        public function signOut()
+        {
+
         }
 
 }

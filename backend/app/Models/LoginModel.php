@@ -1,13 +1,27 @@
 <?php namespace Bidding\Models;
+use Bidding\Interfaces\ILoginSystem as ILogin;
 
-class LoginModel
+class LoginModel implements ILogin
 {
-    function __construct(){
-
-        echo "this is the model";
+    function __construct()
+    {
 
     }
 
+    public function signUp($params)
+    {
+
+    }
+
+    public function signIn($params)
+    {
+
+    }
+    
+    public function signOut()
+    {
+
+    }
 
 }
 

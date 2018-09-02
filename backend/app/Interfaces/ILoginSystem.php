@@ -2,8 +2,8 @@
 
 interface ILoginSystem
 {
-	public function signUp($params);
-	public function signIn($params);
-	public function signOut();
+	function signUp($params);
+	function signIn($params);
+	function signOut();
 }
 ?>

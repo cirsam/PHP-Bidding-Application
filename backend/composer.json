@@ -1,7 +1,8 @@
 {
 	"autoload": {
 		"psr-4": { 
-					"Bidding\\": "app/"
+					"Bidding\\": "app/",
+					"Tests\\": "test/"
 				 }
 	},
 	"require-dev": {

@@ -1,5 +1,5 @@
 <?php
-class Connector
+class Connectors
 {  
     private $username;
     private $password;
@@ -21,17 +21,17 @@ class Connector
         try
         {
             // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            $this->conn = new mysqli($servername, $username, $password, $dbname);
 
             // Check connection
-            if ($conn->connect_error) 
+            if ($this->conn->connect_error) 
             {
                 throw new Exception("<h1 style=\"color:red;\" >Could not connect.</h1>");
                 die();     
             }
             else
             {
-                return $conn;
+                return $this->conn;
             }
         }
         catch(Exception $e)
@@ -39,18 +39,6 @@ class Connector
             echo $e->getMessage();
         }
     }
-    
-/*     function __get($username){
-       $this->username = $username;
-
-      switch($name){
-            case "username":
-            case "password":
-                $this->password = $name;
-            case "database":
-                $this->database = $name;
-        } 
-    } */
 
     function __set($name,$value)
     {
@@ -67,11 +55,11 @@ class Connector
 
     function __destruct()
     {
-        mysqli_close($this->connect());
+       // mysqli_close($this->conn);
     }
 }
 
-$newconnent = NEW Connector();
+$newconnent = NEW Connectors();
 
 if(isset($_REQUEST["setup"]) && $_REQUEST["setup"]!="true")
 {
@@ -85,5 +73,4 @@ else
     $newconnent->password = "datumadmin";
     $newconnent->database = "datumbidding";
 }
-
 ?>

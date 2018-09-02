@@ -9,11 +9,12 @@
 	<h1><center>Setup Page to create tables</center></h1>
 		<?php
 		if(isset($_REQUEST["setup"]) && $_REQUEST["setup"]!="true"){
-			require_once("Backend/app/Models/Connectors.php");
+			require_once("Models/Connectors.php");
 			$noerror = true;
 			
-			$result_user = $newconnent->connect()->query("CREATE TABLE IF NOT EXISTS  `users` (
+			$result_user = $newconnent->connect()->query("CREATE TABLE IF NOT EXISTS `users` (
 					`userid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+					`username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
 					`name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
 					`email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
 					`password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,

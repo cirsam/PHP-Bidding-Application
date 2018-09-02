@@ -1,56 +1,97 @@
 <?php
-if (!isset($_POST['username']) || trim($_POST['username']) == '') 
+require_once("../Models/DBconnect.php");
+require_once("../Controllers/Validate.php");
+
+class Register extends DBconnect
 {
-	header('Location:/html/register.php?msg=you forgot to put in your username.');
-	die();
+    private $mysqli;
+    private $fullname;
+    private $username;
+    private $password;
+    private $email;
+    private $msgs;
+
+    function __construct()
+    {
+
+    }
+
+    public function registerUser()
+    {
+        $validate = new Validate;
+
+        if(($msgs = $validate->checkUserDataRegister($this->username,$this->email,$this->password1,$this->password2,$this->fullname)) != null)
+        {
+            header('Location:/html/register.php?msg='.$msgs.'&status=fail');
+            die();
+        }
+
+        $mysqli = parent::__construct();
+        $stmt = $mysqli->prepare("INSERT INTO users (userid,username,fullname,email,password) VALUES( ?,?,?,?,?)");
+        $stmt->bind_param('sssss',$userid,$usernames,$fullname,$email,$password);
+
+        $userid = $mysqli->escape_string("");
+        $usernames = $mysqli->escape_string($this->username);
+        $fullname = $mysqli->escape_string($this->fullname);
+        $email = $mysqli->escape_string($this->email);
+        $password = $mysqli->escape_string(hash("sha512",$this->password1));
+
+        if(!$stmt->execute())
+        {
+            echo "execution fialed";
+        }
+
+        header('Location:/html/login.php?msg=Your account has successfully been created you may now login&status=success');
+        die();
+    }
+
+    function __set($name,$value)
+    {
+        if($name=="fullname"){
+            $this->fullname = $value;
+        }
+        if($name=="username"){
+            $this->username = $value;
+        }
+        if($name=="email"){
+            $this->email = $value;
+        }
+        if($name=="password1"){
+            $this->password1 = $value;
+        }
+        if($name=="password2"){
+            $this->password2 = $value;
+        }
+    }
+
 }
 
-if (strlen($_POST['username'])<5) 
+$newrgister = new Register;
+
+if (isset($_POST["usernames"])) 
 {
-	header('Location:/html/register.php?msg=your username is too short.');
-	die();
+    $newrgister->username = $_POST["usernames"];    
 }
 
-if (preg_match('/[^\x20-\x7f]/', $_POST['username'])) 
+if (isset($_POST["email"])) 
 {
-	header('Location:/html/register.php?msg=your username must contain only letters and numbers.');
-	die();
+    $newrgister->email = $_POST["email"];
 }
 
-if (!isset($_POST['email']) || trim($_POST['email']) == '') 
+if (isset($_POST["fullname"])) 
 {
-	header('Location:/html/register.php?msg=you forgot to put in an email address.');
-	die();
+    $newrgister->fullname = $_POST["fullname"];    
 }
 
-if (!filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL)) 
+if (isset($_POST["password1"])) 
 {
-	header('Location:/html/register.php?msg=the email address you put in is invalid.');
-	die();
+    $newrgister->password1 = $_POST["password1"];
 }
 
-if (!isset($_POST['password1']) || trim($_POST['password1']) == '') 
+if (isset($_POST["password2"])) 
 {
-	header('Location:/html/register.php?msg=you forgot to put in your password.');
-	die();
+    $newrgister->password2 = $_POST["password2"];
 }
 
-if (!isset($_POST['password2']) || trim($_POST['password2']) == '') 
-{
-	header('Location:/html/register.php?msg=you forgot to put in your password again.');
-	die();
-}
+$newrgister-> registerUser();
 
-if (trim($_POST['password1']) != trim($_POST['password2'])) 
-{
-	header('Location:/html/register.php?msg=your passwords do not match.');
-	die();
-}
-
-if (strlen($_POST['password1'])<5) 
-{
-	header('Location:/html/register.php?msg=your passwords is too short.');
-	die();
-}
-
-//validate assci char

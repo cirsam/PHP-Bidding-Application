@@ -15,10 +15,15 @@
     <?php include_once("../menu.php"); ?>
     <div class="container" >
     <center><h1>Register to bid or create items to be bid on</h1></center>
-    <form method="POST" action="/Auth/register.php" >
+    <form method="POST" action="/Auth/Register.php" enctype="multipart/form-data" >
         <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name="username" >
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name="usernames" >
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Full Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name" name="fullname" >
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">

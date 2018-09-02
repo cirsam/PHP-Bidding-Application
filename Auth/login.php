@@ -1,23 +1,64 @@
+
 <?php
+require_once("../Models/DBconnect.php");
+require_once("../Controllers/Validate.php");
 
-// make a new goddamn user
+class Login
+{
+    private $mysqli;
+    private $fullname;
+    private $password;
 
-if (!isset($_POST['email']) || trim($_POST['email']) == '') {
-	header('Location:/html/login.php?msg=you forgot to put in an email address.');
-	die();
+    function __construct()
+    {
+    }
+
+    public function logUserIn()
+    {
+        $validate = new Validate;
+
+        if(($msg = $validate->checkUserDataLogin($this->username,$this->password)) != null)
+        {
+           	header('Location:/html/login.php?msg='.$msg.'&status=fail');
+            die();
+		}
+
+		$userdata = $validate->getCheckUserData($this->username, $this->password);
+		$_SESSION["userid"] = $userdata["userid"]; 
+		$_SESSION["username"] = $userdata["username"]; 
+		$_SESSION["fullname"] = $userdata["fullname"]; 
+		$_SESSION["email"] = $userdata["email"];
+		$_SESSION["islogined"] = true;
+
+		header('Location:/html/home.php');
+		
+        die();
+    }
+
+    function __set($name,$value)
+    {
+        switch($name)
+        {
+            case "username":
+                $this->username = $value;
+            case "password":
+                $this->password = $value;
+        }
+    }
+
 }
 
-if (!filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL)) {
-	header('Location:/html/login.php?msg=the email address you put in is invalid.');
-	die();
+$newLogin = new Login;
+
+if (isset($_POST["username"])) 
+{
+    $newLogin->username = $_POST["username"];    
 }
 
-if (!isset($_POST['password1']) || trim($_POST['password1']) == '') {
-	header('Location:/html/login.php?msg=you forgot to put in your password.');
-	die();
+if (isset($_POST["password"])) 
+{
+    $newLogin ->password = $_POST["password"];
 }
 
-if (strlen($_POST['password1'])<5) {
-	header('Location:/html/login.php?msg=your passwords is too short.');
-	die();
-}
+$newLogin -> LogUserIn();
+

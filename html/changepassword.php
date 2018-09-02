@@ -6,30 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bidding App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="static/css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="static/js/main.js"></script>
+    <script src="../static/js/main.js"></script>
 </head>
 <body>
-<?php include_once("menu.php"); ?>
-    <center><h1>Welcome to the Bidding APP</h1></center>
-    <form>
+    <?php include_once("../menu.php"); ?>
+    <div class="container" >
+    <center><h1>Changing your password: <?php echo $_SESSION["fullname"]; ?></h1></center>
+    <form method="POST" action="/Auth/Changepassword.php" >
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <label for="exampleInputPassword1">Enter Old Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your Password" name="oldpassword">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="exampleInputPassword1">Enter New Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your Password" name="password1">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your Password" name="password2">
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+    </form>   
+    </div>
     <footer>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

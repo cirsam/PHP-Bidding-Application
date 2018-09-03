@@ -32,7 +32,9 @@ abstract class DBconnect
 
     function __destruct()
     {
-        mysqli_close($this->dbconnect);
+        if(isset($this->dbconnect)){
+            mysqli_close($this->dbconnect);         
+        }
     }
 }
 ?>

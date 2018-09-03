@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,28 +12,21 @@
 </head>
 <body>
     <?php
-        require_once("../Controllers/Items/GetItems.php");
-        include_once("../menu.php");
-        if(!isset($_SESSION["islogined"]))
-        {
-            die();
-        }
-        $newitems = new GetItems;
-        $results = $newitems->rows;
+        require_once("../../Controllers/Bids/GetBids.php");
+        include_once("../../menu.php");
+        $newbids = new GetBids;
+        $newbids->itemid = $_GET["itemid"];
+        $results = $newbids->rows;
     ?>
     <div class="container">
-        <center><h1>My Items</h1></center>
+        <center><h1>Bids for item: <?php echo $_GET["itemname"]; ?></h1></center>
         <table class="table table-striped table-dark">
         <thead>
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">Item Name</th>
-            <th scope="col">Item Description</th>
-            <th scope="col">Bids</th>
-            <th scope="col">Closing Date</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Bid #</th>
+            <th scope="col">Bidder</th>
+            <th scope="col">Bid Amount</th>
+            <th scope="col">Date Bidded</th>
             </tr>
         </thead>
         <tbody>
@@ -41,20 +35,10 @@
                 {
                     echo '
                     <tr>
-                        <th scope="row">'.$rows["itemid"].'</th>
-                        <th>'.$rows["itemname"].'</th>
-                        <td>'.$rows["itemdescription"].'</td>
-                        <td>'.$rows["totalbids"].'</td>
-                        <td>'.$rows["expire_date"].'</td>
-                        <td>
-                            <a href="/html/items/updateitem.php?id='.$rows["itemid"].'" class="btn btn-info mr-sm-2" >Update</a>
-                        </td>
-                        <td>
-                            <a href="/Controllers/Items/DeleteItem.php?id='.$rows["itemid"].'" class="btn btn-danger mr-sm-2" >Delete</a>
-                        </td>
-                        <td>
-                            <a href="/html/Bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" class="btn btn-primary mr-sm-2" >View Bids</a>
-                        </td>
+                        <th scope="row">'.$rows["bidid"].'</th>
+                        <td>'.$rows["fullname"].'</td>
+                        <td>$'.$rows["bidamount"].'</td>
+                        <td>'.date('d/m/Y',strtotime($rows["created_at"])).'</td>
                     </tr>                   
                     ';
                 }

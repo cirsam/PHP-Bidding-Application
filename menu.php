@@ -8,25 +8,34 @@ session_start();
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/html/home.php">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
+      <?php
+            if(isset($_SESSION["islogined"]))
+            {
+              echo '
+              <li class="nav-item">
+                <a class="nav-link" href="/html/home.php">Home</a>
+              </li>
+              ';
+            }
+        ?>     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Biding Actions
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+        <?php
+          if(isset($_SESSION["islogined"]))
+          {
+            echo '
+              <a class="dropdown-item" href="/html/items/additem.php">Add Item</a>
+              <a class="dropdown-item" href="/html/home.php">My Items</a>
+            ';
+          }
+          ?>
+          <a class="dropdown-item" href="/">All Items</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Most Popular Bids</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0" >

@@ -15,10 +15,9 @@
 			$result_user = $newconnent->connect()->query("CREATE TABLE IF NOT EXISTS `users` (
 					`userid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 					`username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-					`name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+					`fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
 					`email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-					`password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-					`remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+					`password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
 					PRIMARY KEY (userid),
 					UNIQUE KEY (email)
 				) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -51,6 +50,8 @@
 				`bidid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 				`userid` int(10) COLLATE utf8_unicode_ci NOT NULL,
 				`itemid` int(10) COLLATE utf8_unicode_ci NOT NULL,
+				`bidamount` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+				`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 				PRIMARY KEY (bidid),
 				UNIQUE KEY (bidid),
 				CONSTRAINT FK_itemid FOREIGN KEY (itemid) REFERENCES items(itemid)

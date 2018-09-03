@@ -18,27 +18,27 @@
     <form method="POST" action="/Auth/Register.php" enctype="multipart/form-data" >
         <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name="usernames" >
+            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username" name="usernames" >
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Full Name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name" name="fullname" >
+            <input type="text" class="form-control" id="fullname" aria-describedby="emailHelp" placeholder="Enter your name" name="fullname" >
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" >
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" >
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password1" >
+            <input type="password" class="form-control" id="password1" placeholder="Password" name="password1" >
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Confirm Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password" name="password2" >
+            <input type="password" class="form-control" id="password2" placeholder="Confirm Password" name="password2" >
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group form-check">

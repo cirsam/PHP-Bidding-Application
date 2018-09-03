@@ -21,8 +21,25 @@ class DeleteItem extends DBconnect
 
     private function deleteUserItems()
     {
+        $this->deleteItemBids($this->itemid);
+
         $mysqli = parent::__construct();
         $stmt = $mysqli->prepare("DELETE FROM items WHERE itemid=?");
+        $stmt->bind_param('s', $itemid);
+        $itemid = $this->itemid;
+
+        /* execute prepared statement */
+        if(!$stmt->execute())
+        {
+            echo "execution fialed";
+        }
+        header('Location:/html/home.php?msg=Your item has been deleted&status=success');
+    }
+
+    private function deleteItemBids($itemid)
+    {
+        $mysqli = parent::__construct();
+        $stmt = $mysqli->prepare("DELETE FROM bids WHERE itemid=?");
         $stmt->bind_param('s', $itemid);
         $itemid = $this->itemid;
 

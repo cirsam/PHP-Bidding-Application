@@ -24,7 +24,7 @@
 				");
 
 			if($result_user!=1){
-				echo "<h1 style=\"color:red;\" >Error Creating the user table try again</h1>";
+				echo "<h1 style=\"color:red;\" >Error Creating the users table try again</h1>";
 				$noerror = true;
 			}
 
@@ -70,11 +70,17 @@
 		}
 		?>
 		<div>
-		Create a database and using the connection data to complete the forms.
-
-		This will create your needed tables in the database.
-
-		Got to auth/connoctors.php and update that file with your database credentials. Call 9375369660 for help.
+		<br /><br />
+		<h1>How to setup</h1><br />
+		1. Create a database and using the connection data to complete the forms below and submit it and it will create three tables
+		<br />
+			a.users <br />
+			b.bids <br />
+			c.items <br /><br />
+		2. Go and look for the file in the directory /Models/DBconnect.php and update that file with your database credentials and you are good to go.
+		<br /><br />
+		For help call 9375369660.
+		<br /><br />
 		</div>
 		<form action="" method="post" >
 			<div class="form-group" >

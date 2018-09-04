@@ -8,7 +8,8 @@
 	<body class="container" >
 	<h1><center>Setup Page to create tables</center></h1>
 		<?php
-		if(isset($_REQUEST["setup"]) && $_REQUEST["setup"]!="true"){
+		if(isset($_REQUEST["setup"]) && $_REQUEST["setup"]!="true")
+		{
 			require_once("Models/Connectors.php");
 			$noerror = true;
 			
@@ -23,9 +24,10 @@
 				) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 				");
 
-			if($result_user!=1){
+			if($result_user!=1)
+			{
 				echo "<h1 style=\"color:red;\" >Error Creating the users table try again</h1>";
-				$noerror = true;
+				$noerror = false;
 			}
 
 			$result_items = $newconnent->connect()->query("CREATE TABLE IF NOT EXISTS  `items` (
@@ -41,9 +43,10 @@
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 			");
 
-			if($result_items!=1){
+			if($result_items!=1)
+			{
 				echo "<h1 style=\"color:red;\" >Error Creating the items table try again</h1>";
-				$noerror = true;
+				$noerror = false;
 			}
 
 			$result_bids = $newconnent->connect()->query("CREATE TABLE IF NOT EXISTS `bids` (
@@ -58,9 +61,10 @@
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 			");
 
-			if($result_bids!=1){
+			if($result_bids!=1)
+			{
 				echo "<h1 style=\"color:red;\" >Error Creating the bids table try again</h1>";
-				$noerror = true;
+				$noerror =false;
 			}
 
 			if($noerror)
@@ -70,17 +74,21 @@
 		}
 		?>
 		<div>
-		<br /><br />
-		<h1>How to setup</h1><br />
-		1. Create a database and using the connection data to complete the forms below and submit it and it will create three tables
-		<br />
-			a.users <br />
-			b.bids <br />
-			c.items <br /><br />
-		2. Go and look for the file in the directory /Models/DBconnect.php and update that file with your database credentials and you are good to go.
-		<br /><br />
-		For help call 9375369660.
-		<br /><br />
+			<div>
+				<h1>How to setup</h1><br />
+				<ol>
+					<li>Create a database and using the connection data to complete the forms below and submit it and it will create three tables</li>
+						a.users <br />
+						b.bids <br />
+						c.items <br />
+						<br />
+					</li>
+					<li>Go and look for the file in the directory /Models/DBconnect.php and update that file with your database credentials and you are good to go.</li>
+				</ol>
+				<p>
+					For help call 9375369660.
+				</p>
+			</div>
 		</div>
 		<form action="" method="post" >
 			<div class="form-group" >

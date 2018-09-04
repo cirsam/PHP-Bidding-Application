@@ -1,3 +1,6 @@
 # PHP-Bidding-Application
-I had to build this for an interview within 4 days. It uses namespace and composer psr4 to autoload the classes. Created my own route to handle the https requests and separated then backend PHP Web API from the frontend html and client side scripts
+This is a PHP app that allows you to create an account and be able to place a bid on an item. 
 
+It has a setup script called setupdb.php which gives you the steps to follow to get it running. It is lightweight and very fast.
+
+Demo here: http://34.217.125.27

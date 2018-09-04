@@ -25,7 +25,7 @@ class Addbids extends DBconnect
 
     public function addbids()
     {
-        if($this->checkIsHighestBid()>$this->bidamount)
+        if($this->checkIsHighestBid()>=$this->bidamount)
         {
             $row = [];
             $row["status"] = "";

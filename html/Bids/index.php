@@ -38,7 +38,7 @@
                         <th scope="row">'.$rows["bidid"].'</th>
                         <td>'.$rows["fullname"].'</td>
                         <td>$'.$rows["bidamount"].'</td>
-                        <td>'.date('d/m/Y',strtotime($rows["created_at"])).'</td>
+                        <td>'.date('d/m/Y H:i:A',strtotime($rows["created_at"])).'</td>
                     </tr>                   
                     ';
                 }

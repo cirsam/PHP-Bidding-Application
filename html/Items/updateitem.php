@@ -14,7 +14,7 @@
 <body>
     <?php 
         include_once("../../menu.php");
-        require_once("../../Controllers/Items/UpdateItem.php");
+        require_once("../../Controllers/Items/Updateitem.php");
         $newupdate = new UpdateItem;
         $row = $newupdate->getUserItem($_GET["id"]);
     ?>

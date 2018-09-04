@@ -14,11 +14,11 @@
             {
                 numofbids.text(results.totalbids);
                 bidamount.val(null);
-                bidstatus.html("<span style=\"color:green;\" >Great your bid has been placed</span>");
+                bidstatus.html("<span style=\"color:green;\" >Great your bid has been placed</span><br/>");
             }
             else
             {
-                bidstatus.html("<span style=\"color:red;\" >"+results.msg+"</span>");
+                bidstatus.html("<span style=\"color:red;\" >"+results.msg+"</span><br/>");
             }
         });
     }

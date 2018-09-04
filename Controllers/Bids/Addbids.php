@@ -29,7 +29,7 @@ class Addbids extends DBconnect
         {
             $row = [];
             $row["status"] = "";
-            $row["msg"] = "Your bid $".$this->bidamount." is lower than the highest bid $".$this->checkIsHighestBid();
+            $row["msg"] = "Your bid $".$this->bidamount." is lower than or same as the highest bid $".$this->checkIsHighestBid();
             
             echo Json_encode($row);
 

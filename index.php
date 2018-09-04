@@ -44,9 +44,14 @@
                             </p>
                             <p>Closing Date: '.$rows["expire_date"].'</p>
                             <p>
-                                <a class="btn btn-secondary col-12" href="/html/Bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" role="button" style="virtical-align:bottom;" >View Bids >></a>
+                                <a class="btn btn-secondary col-12" href="/html/bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" role="button" style="virtical-align:bottom;" >View Bids >></a>
                             </p>
                             ';
+                        }
+                        else{
+                            echo'
+                                <p><strong id="closing" >Closed on: '.$rows["expire_date"].'</p>
+                            ';                          
                         }
                         echo'
                         </div><!--/span-->                 
@@ -64,7 +69,7 @@
                         <p id="numofbids_'.$rows["itemid"].'" >Number of bids:<strong> '.$rows["totalbids"].'</strong></p>
                         <p>Closing Date: '.$rows["expire_date"].'</p>
                         <p>
-                        <a class="btn btn-secondary col-12" href="/html/Bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" role="button" style="virtical-align:bottom;" >View Bids >></a>
+                        <a class="btn btn-secondary col-12" href="/html/bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" role="button" style="virtical-align:bottom;" >View Bids >></a>
                         </p>
                         </div><!--/span-->                   
                         ';                      

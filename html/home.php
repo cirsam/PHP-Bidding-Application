@@ -53,7 +53,7 @@
                             <a href="/Controllers/Items/DeleteItem.php?id='.$rows["itemid"].'" class="btn btn-danger mr-sm-2" >Delete</a>
                         </td>
                         <td>
-                            <a href="/html/Bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" class="btn btn-primary mr-sm-2" >View Bids</a>
+                            <a href="/html/bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" class="btn btn-primary mr-sm-2" >View Bids</a>
                         </td>
                     </tr>                   
                     ';

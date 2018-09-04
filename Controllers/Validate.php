@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__."/IValidate.php");
+require_once(__DIR__."/../Models/DBconnect.php");
 
 class Validate  extends DBconnect implements IValidate
 {

@@ -2,7 +2,7 @@
 require_once '../Controllers/Validate.php';
 require_once '../Models/DBconnect.php';
 
-class CalculatorTest extends PHPUnit\Framework\TestCase
+class ChangePasswordTest extends PHPUnit\Framework\TestCase
 {
 	public function testValidateUserCredentials_all_null()
 	{
@@ -41,8 +41,8 @@ class CalculatorTest extends PHPUnit\Framework\TestCase
 	{
         $validateCredentials = New Validate;
         $oldpassword = "Testpassword2";
-        $password1 = "Testpassword1";
-        $password2 = "Testpassword1";
+        $password1 = "Testp";
+        $password2 = "Testp";
 
         $result = $validateCredentials->checkUserDataChangePassword($password1,$password2,$oldpassword);
 		$this->assertEquals("Your new passwords is too short",$result);

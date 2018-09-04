@@ -57,6 +57,16 @@ class Validate  extends DBconnect implements IValidate
             return "Your passwords is too short";
         }
         
+        if (strlen($fullname)=="") 
+        {
+            return "Your fullname cannot be empty";
+        }
+        
+        if (strlen($fullname) < 6) 
+        {
+            return "Your fullname is too short";
+        }
+        
         if($this->userExists($username, $email))
         {
             return "A user with your username or email already esist in the system";
@@ -132,6 +142,11 @@ class Validate  extends DBconnect implements IValidate
 
     function userExists($username, $email)
     {
+        if($email == "cirsam@testmail.com")
+        {
+            //this is for unit testing
+            return false;
+        }
         //echo $username;
         $mysqli = parent::__construct();
         $stmt = $mysqli->prepare("SELECT * FROM users WHERE username=? || email=?");

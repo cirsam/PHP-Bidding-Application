@@ -113,7 +113,7 @@ class Validate  extends DBconnect implements IValidate
             return "Your have to put in a username";
         }
         
-        if (strlen($username)<5) 
+        if (strlen($username)<6) 
         {
             return "Your username is too short";
         }
@@ -142,11 +142,6 @@ class Validate  extends DBconnect implements IValidate
 
     function userExists($username, $email)
     {
-        if($email == "cirsam@testmail.com")
-        {
-            //this is for unit testing
-            return false;
-        }
         //echo $username;
         $mysqli = parent::__construct();
         $stmt = $mysqli->prepare("SELECT * FROM users WHERE username=? || email=?");
@@ -174,6 +169,7 @@ class Validate  extends DBconnect implements IValidate
 
     function getCheckUserData($username, $password)
     {
+
         $mysqli = parent::__construct();
         $stmt = $mysqli->prepare("SELECT * FROM users WHERE username=? && password=?");
         $stmt->bind_param('ss', $username, $hash);

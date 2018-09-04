@@ -58,6 +58,4 @@ class ChangePasswordTest extends PHPUnit\Framework\TestCase
 		$result = $validateCredentials->checkUserDataChangePassword($password1,$password2,$oldpassword);
 		$this->assertEquals("",$result);
 	}
-
-
 }

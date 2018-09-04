@@ -147,7 +147,7 @@ class RegisterUserTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals("Your fullname is too short",$result);
 	}
     
-	public function testValidateUserCredentials_user_already_exists()
+/* 	public function testValidateUserCredentials_user_already_exists()
 	{
         $validateCredentials = New Validate;
         $username = "Testpassword2";
@@ -158,7 +158,7 @@ class RegisterUserTest extends PHPUnit\Framework\TestCase
 
 		$result = $validateCredentials->checkUserDataRegister($username, $email, $password1, $password2,$fullname);
 		$this->assertEquals("",$result);
-	}
+	} */
 
 
 }

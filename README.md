@@ -3,4 +3,4 @@ This is a PHP app that allows you to create an account and be able to place a bi
 
 It has a setup script called setupdb.php which gives you the steps to follow to get it running. It is lightweight and very fast.
 
-Demo here: http://34.217.125.27
+Demo here: http://www.blueready.com/

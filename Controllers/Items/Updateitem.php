@@ -1,6 +1,9 @@
 <?php
 require_once(__DIR__."/../../Models/DBconnect.php");
-class UpdateItem extends DBconnect
+require_once(__DIR__."/../../Controllers/Items/AbsUpdateItem.php");
+require_once(__DIR__."/../../Controllers/Items/IUpdateItem.php");
+
+class UpdateItem extends AbsUpdateItem implements IUpdateItem
 {
     private $itemid;
     private $itemdescription;
@@ -9,12 +12,12 @@ class UpdateItem extends DBconnect
     private $quantity;
     private $expire_date;
 
-    function __construct()
+    public function __construct()
     {
 
     }
 
-    function __set($name,$value)
+    public function __set($name,$value)
     {
         if($name=="itemid")
         {

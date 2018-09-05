@@ -2,28 +2,43 @@
 <?php
 require_once("../Models/DBconnect.php");
 require_once("../Controllers/Validate.php");
+require_once("../Auth/ILogin.php");
 
-class Login
+class Login implements ILogin
 {
     private $mysqli;
     private $fullname;
     private $password;
+    private $userdata;
+    private $params = [];
 
     function __construct()
     {
+        
+    }
+
+    public function validateUserInput($params)
+    {
+        $validate = new Validate;
+
+        if(($msg = $validate->checkUserDataLogin($params["username"],$params["password"])) != null)
+        {
+           	header('Location:/html/login.php?msg='.$msg.'&status=fail');
+            die();
+        }
+
+        $userdata = $validate->getCheckUserData($this->username, $this->password);
+
+        return $userdata;
     }
 
     public function logUserIn()
     {
-        $validate = new Validate;
+        $params["username"] = $this->username;
+        $params["password"] = $this->password;
+        
+        $userdata = $this->validateUserInput($params);
 
-        if(($msg = $validate->checkUserDataLogin($this->username,$this->password)) != null)
-        {
-           	header('Location:/html/login.php?msg='.$msg.'&status=fail');
-            die();
-		}
-
-		$userdata = $validate->getCheckUserData($this->username, $this->password);
 		$_SESSION["userid"] = $userdata["userid"]; 
 		$_SESSION["username"] = $userdata["username"]; 
 		$_SESSION["fullname"] = $userdata["fullname"]; 

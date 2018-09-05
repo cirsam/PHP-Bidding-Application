@@ -19,7 +19,7 @@
         $results = $newbids->rows;
     ?>
     <div class="container">
-        <center><h1>Bids for item: <?php echo $_GET["itemname"]; ?></h1></center>
+        <center><h1>Bids for item: <?php echo htmlentities(stripslashes($_GET["itemname"])); ?></h1></center>
         <table class="table table-striped table-dark">
         <thead>
             <tr>

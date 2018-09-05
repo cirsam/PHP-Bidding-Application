@@ -21,7 +21,7 @@
         $results = $newitems->rows;
     ?>
     <div class="container">
-        <center><h1>My Items</h1></center>
+        <center><h1>My Items <a href="/html/items/additem.php" class="btn" >Add Item</a></h1></center>
         <table class="table table-striped table-dark">
         <thead>
             <tr>
@@ -42,7 +42,7 @@
                     echo '
                     <tr>
                         <th scope="row">'.$rows["itemid"].'</th>
-                        <th>'.$rows["itemname"].'</th>
+                        <th>'.htmlentities(stripslashes($rows["itemname"])).'</th>
                         <td>'.$rows["itemdescription"].'</td>
                         <td>'.$rows["totalbids"].'</td>
                         <td>'.$rows["expire_date"].'</td>

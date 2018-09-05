@@ -1,5 +1,7 @@
 <?php
 require_once("../../Models/DBconnect.php");
+require_once(__DIR__."/../../Controllers/Bids/AbsAddBids.php");
+require_once(__DIR__."/../../Controllers/Bids/IAddBids.php");
 
 if(!is_numeric($_POST["bidamount"]))
 {
@@ -12,13 +14,13 @@ if(!is_numeric($_POST["bidamount"]))
     return;
 }
 
-class Addbids extends DBconnect
+class AddBids extends AbsAddBids implements IAddBids
 {
     private $mysqli;
     private $bidamount;
     private $itemid;
 
-    function __construct()
+    public function __construct()
     {
 
     }
@@ -53,7 +55,7 @@ class Addbids extends DBconnect
         echo $this->getBidData($itemid);
     }
 
-    function __set($name,$value)
+    public function __set($name,$value)
     {
         if($name=="itemid"){
             $this->itemid = $value;

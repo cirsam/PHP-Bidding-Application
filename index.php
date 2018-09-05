@@ -29,8 +29,8 @@
                     while ($rows = $results->fetch_assoc())
                     {
                         echo '
-                        <div class="col-6 col-lg-4" style="min-hieght:400px;" >
-                        <h2>'.$rows["itemname"].'</h2>
+                        <div class="col-5" >
+                        <h2 class="home_h2" >'.htmlentities(stripslashes($rows["itemname"])).'</h2>
                         <p>'.$rows["itemdescription"].'</p>
                         <p id="numofbids_'.$rows["itemid"].'" >Number of bids:<strong> '.$rows["totalbids"].'</strong></p>
                         ';
@@ -50,7 +50,7 @@
                         }
                         else{
                             echo'
-                                <p><strong id="closing" >Closed on: '.$rows["expire_date"].'</p>
+                                <p><strong id="closing" >Closed on: '.$rows["expire_date"].'</strong></p>
                             ';                          
                         }
                         echo'
@@ -63,13 +63,13 @@
                     while ($rows = $results->fetch_assoc())
                     {
                         echo '
-                        <div class="col-6 col-lg-4" style="min-hieght:400px;" >
-                        <h2>'.$rows["itemname"].'</h2>
+                        <div class="col-5" >
+                        <h2 class="home_h2" >'.$rows["itemname"].'</h2>
                         <p>'.$rows["itemdescription"].'</p>
                         <p id="numofbids_'.$rows["itemid"].'" >Number of bids:<strong> '.$rows["totalbids"].'</strong></p>
                         <p>Closing Date: '.$rows["expire_date"].'</p>
                         <p>
-                        <a class="btn btn-secondary col-12" href="/html/bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" role="button" style="virtical-align:bottom;" >View Bids >></a>
+                            <a class="btn btn-secondary col-12" href="/html/bids/?itemid='.$rows["itemid"].'&itemname='.$rows["itemname"].'" role="button" style="virtical-align:bottom;" >View Bids >></a>
                         </p>
                         </div><!--/span-->                   
                         ';                      

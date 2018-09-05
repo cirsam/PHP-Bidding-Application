@@ -1,6 +1,9 @@
 <?php
 require_once(__DIR__."/../../Models/DBconnect.php");
-class GetItems extends DBconnect
+require_once(__DIR__."/../../Controllers/Items/AbsGetItems.php");
+require_once(__DIR__."/../../Controllers/Items/IGetItems.php");
+
+class GetItems extends AbsGetItems implements IGetItems
 {
     private $rows;
     private $firstitem;
@@ -11,7 +14,7 @@ class GetItems extends DBconnect
 
     }
 
-    function __get($name)
+    public function __get($name)
     {
         switch($name){
             case "rows":

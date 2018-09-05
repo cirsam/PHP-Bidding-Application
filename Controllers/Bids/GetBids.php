@@ -1,16 +1,19 @@
 <?php
 require_once(__DIR__."/../../Models/DBconnect.php");
+require_once(__DIR__."/../../Controllers/Bids/AbsGetBids.php");
+require_once(__DIR__."/../../Controllers/Bids/IGetBids.php");
 
-class GetBids extends DBconnect
+class GetBids extends AbsGetBids implements IGetBids
 {
     private $rows;
     private $itemid;
-    function __construct()
+
+    public function __construct()
     {
 
     }
 
-    function __get($name)
+    public function __get($name)
     {
         switch($name){
             case "rows":
@@ -22,7 +25,7 @@ class GetBids extends DBconnect
         }
     }
 
-    function __set($name,$value)
+    public function __set($name,$value)
     {
         return $this->itemid = $value;
     }

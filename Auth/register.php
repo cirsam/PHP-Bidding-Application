@@ -1,8 +1,9 @@
 <?php
 require_once("../Models/DBconnect.php");
 require_once("../Controllers/Validate.php");
+require_once("../Auth/ILogin.php");
 
-class Register extends DBconnect
+class Register extends DBconnect implements ILogin
 {
     private $mysqli;
     private $fullname;
@@ -16,7 +17,7 @@ class Register extends DBconnect
 
     }
 
-    public function registerUser()
+    public function validateUserInput($params)
     {
         $validate = new Validate;
 
@@ -25,7 +26,17 @@ class Register extends DBconnect
             header('Location:/html/register.php?msg='.$msgs.'&status=fail');
             die();
         }
+    }
 
+    public function registerUser()
+    {
+        $params["username"] = $this->username;
+        $params["password1"] = $this->password1;
+        $params["password2"] = $this->password2;
+        $params["fullname"] = $this->fullname;
+
+        $this->validateUserInput($params);
+        
         $mysqli = parent::__construct();
         $stmt = $mysqli->prepare("INSERT INTO users (userid,username,fullname,email,password) VALUES( ?,?,?,?,?)");
         $stmt->bind_param('sssss',$userid,$usernames,$fullname,$email,$password);
